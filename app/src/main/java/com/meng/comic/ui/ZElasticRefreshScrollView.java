@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ScrollView;
 
 /**
+ *  下拉弹回的scrollview
  * Created by Dmeng on 2018/11/19.
  */
 
