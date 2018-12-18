@@ -20,9 +20,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.meng.callnumber.utils.PreferencesUtils;
-import com.meng.wether.ITelephony;
-
-import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -114,21 +111,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public static void endCall(Context cx) { //挂断电话
-        TelephonyManager telMag = (TelephonyManager) cx
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        Class<TelephonyManager> c = TelephonyManager.class;
-        Method mthEndCall = null;
-        try {
-            mthEndCall = c.getDeclaredMethod("getITelephony", (Class[]) null);
-            mthEndCall.setAccessible(true);
-            ITelephony iTel = (ITelephony) mthEndCall.invoke(telMag,
-                    (Object[]) null);
-            iTel.endCall();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void endCall(Context cx) { //挂断电话
+//        TelephonyManager telMag = (TelephonyManager) cx
+//                .getSystemService(Context.TELEPHONY_SERVICE);
+//        Class<TelephonyManager> c = TelephonyManager.class;
+//        Method mthEndCall = null;
+//        try {
+//            mthEndCall = c.getDeclaredMethod("getITelephony", (Class[]) null);
+//            mthEndCall.setAccessible(true);
+//            ITelephony iTel = (ITelephony) mthEndCall.invoke(telMag,
+//                    (Object[]) null);
+//            iTel.endCall();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * 检查权限后的回调
@@ -168,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(TAG, "onReceive: CALL_STATE_RINGING");
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
-                    endCall(context);
+//                    endCall(context);
                     Log.d(TAG, "onReceive: CALL_STATE_OFFHOOK");
                     break;
                 case TelephonyManager.CALL_STATE_IDLE:
